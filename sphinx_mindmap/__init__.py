@@ -2,27 +2,12 @@ import re
 import sphinx
 from os import makedirs, path
 import shutil
-#from docutils import nodes
-import json
-from jinja2 import Environment, FileSystemLoader
 from sphinx.util import logging
 from sphinx.errors import ExtensionError
-
-from typing import TYPE_CHECKING, Any, ClassVar
-
 from docutils.nodes import Element, Node
-
-from sphinx.application import Sphinx
-from sphinx.config import Config
-#from sphinx.util.typing import ExtensionMetadata, OptionSpec
-
 from docutils import nodes
 from docutils.parsers.rst import directives
-from typing import Dict, Any, List
-from sphinx import addnodes
-from sphinx.directives import optional_int
-from sphinx.locale import __
-from sphinx.util import logging, parselinenos
+from typing import Any
 from sphinx.util.docutils import SphinxDirective
 
 __version__ = '0.5.0'
@@ -96,32 +81,22 @@ def boolean_spec(argument: Any) -> bool:
 
 class mindmap(SphinxDirective):
     """
-    Directive to set the highlighting language for code blocks, as well
-    as the threshold for line numbers.
+    This directive renders a mind map defined in PlantUML format and
+    visualizes it using the vis.js network library.
     """
 
     has_content = False
     required_arguments = 1
     optional_arguments = 0
     final_argument_whitespace = False
-    option_spec = {
-        "page-index": directives.nonnegative_int,
-        "page-name": directives.unchanged,
-        "transparency": boolean_spec,
-        "export-scale": directives.positive_int,
-        "export-width": directives.positive_int,
-        "export-height": directives.positive_int,
-    }
-
-    def runOld(self) -> list[Node]:
-        text='BlahBlah'
-        current_source=self.arguments[0]
-        prefix=re.sub(r"(.*\.\./).*","\\1",current_source)
-        current_sourcex=re.sub(r"/^.*\.\./","",current_source).replace(prefix+static_directory,".")
-        node = nodes.raw('', 
-            f"""<a href="{prefix}{static_directory}/mindmap.html?file={current_sourcex}&expanded=true" 
-             title="Follow this link to explore mindmap">{text}</a>""", format='html')
-        return [node]
+    # option_spec = {
+    #     "page-index": directives.nonnegative_int,
+    #     "page-name": directives.unchanged,
+    #     "transparency": boolean_spec,
+    #     "export-scale": directives.positive_int,
+    #     "export-width": directives.positive_int,
+    #     "export-height": directives.positive_int,
+    # }
 
     def run(self) -> list[Node]:
         current_source=self.arguments[0]
@@ -134,8 +109,6 @@ class mindmap(SphinxDirective):
 def setup(app):
     app.connect('config-inited',add_files)
     directives.register_directive('mindmap',mindmap)
-#    app.add_role('sphinx_mindmap', SphinxNeedsDataExplorer_role)
-#    app.add_config_value('sphinx_needs_data_explorer_config',{'filters':[] },"html")
     return {
         "parallel_read_safe": True,
         "parallel_write_safe": True,
