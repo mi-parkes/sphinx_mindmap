@@ -15,3 +15,5 @@ jobs:
     with:
       python-version: '3.12'
       coverage: false
+      doc: true
+
