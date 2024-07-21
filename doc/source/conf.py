@@ -7,6 +7,7 @@ release     = '0.5.0'
 extensions = [
     'sphinx_mindmap',
     'sphinx.ext.githubpages',
+    'myst_parser'
 ]
 
 html_static_path = ['_static']
