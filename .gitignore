@@ -3,3 +3,4 @@ dist
 poetry.lock
 doc/build
 .DS_Store
+doc/.vscode
