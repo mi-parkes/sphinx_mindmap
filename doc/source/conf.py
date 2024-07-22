@@ -17,10 +17,9 @@ language = "en"
 html_theme = "sphinx_book_theme"
 html_css_files = ["css/custom.css"]
 
-# repo = Repo("../..")
-# current_branch = repo.active_branch
-# branch_name = current_branch.name
-branch_name = "main"
+repo = Repo("../..")
+current_branch = repo.active_branch
+branch_name = current_branch.name
 
 html_theme_options = {
     "path_to_docs": "doc/source",
