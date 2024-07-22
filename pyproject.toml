@@ -11,6 +11,12 @@ license = "MIT"
 #homepage = "https://python-poetry.org/"
 repository = "https://github.com/mi-parkes/sphinx_mindmap"
 documentation = "https://mi-parkes.github.io/sphinx_mindmap/"
+exclude = [
+    "build/*",
+    "dist/*",
+    "doc/*",
+    "myvenv/*"
+]
 
 [tool.poetry.dependencies]
 python              = "^3.12"
@@ -40,6 +46,9 @@ extend-exclude = '''
 /(
   # Exclude Example
   tests
+  | build/
+  | dist/
+  | myvenv/
   | profiling/
   | scripts/generate_schema.py
 )
