@@ -26,7 +26,7 @@ current_branch = repo.active_branch
 branch_name = current_branch.name
 
 html_theme_options = {
-    "path_to_docs": "source",
+    "path_to_docs": "doc/source",
     "repository_url": "https://github.com/mi-parkes/sphinx_mindmap",
     "repository_branch": branch_name,
     "show_navbar_depth": 2,
