@@ -101,13 +101,14 @@ class mindmap(SphinxDirective):
 
     def run(self) -> list[Node]:
         current_source = self.arguments[0]
-        prefix = re.sub(r"^(\.\./)*.*", "\\1",current_source)
+        prefix = re.sub(r"^(\.\./)*.*", "\\1", current_source)
         current_sourcex = re.sub(r"^(\.\./)*", "", current_source).replace(
             prefix + static_directory, "."
         )
         iframe_html = f'<iframe src="{prefix}{static_directory}/mindmap.html?file={current_sourcex}&expanded=true&inc=17" width="100%" height="600px" frameBorder="0"></iframe>'
         iframe_node = nodes.raw("", iframe_html, format="html")
         return [iframe_node]
+
 
 def setup(app):
     app.connect("config-inited", add_files)
