@@ -1,10 +1,10 @@
 name: CI with Reusable Python Workflow
 
 on:
-  push:
-    branches:
-      - main
-      - Init
+  # push:
+  #   branches:
+  #     - main
+  #     - Init
   pull_request:
     branches:
       - main
