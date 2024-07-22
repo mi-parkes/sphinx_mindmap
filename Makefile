@@ -33,7 +33,6 @@ show:
 	open http://localhost:$(WEBSERVERPORT)
 
 install:
-	cd sphinx_mindmap
 	pip uninstall -y sphinx_mindmap
 	poetry build
 	pip install dist/sphinx_mindmap-0.5.0-py3-none-any.whl
