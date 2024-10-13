@@ -22,6 +22,17 @@ endif
 $(MAKE_VERBOSE).SILENT:
 	echo NothingAtAll
 
+install:
+	rm -rf build dist doc/build
+	poetry install
+
+prep-release:
+	rm -rf build dist doc/build
+	poetry install
+#	poetry build
+	poetry build -f sdist
+	tar -tf dist/*.tar.gz
+
 webserver:
 	docker ps | awk '$$NF=="$(DCNAME)"{print "docker stop "$$1}' | bash
 	sleep 1
@@ -32,11 +43,10 @@ webserver:
 show:
 	open http://localhost:$(WEBSERVERPORT)
 
-install:
-	pip uninstall -y sphinx_mindmap
-	poetry build
-	pip install dist/sphinx_mindmap-0.5.0-py3-none-any.whl
-
+# install:
+# 	pip uninstall -y sphinx_mindmap
+# 	poetry build
+# 	pip install dist/sphinx_mindmap-0.5.0-py3-none-any.whl
 ec:
 	git commit --allow-empty -m "Empty commit" && git push
 
@@ -64,3 +74,20 @@ test-package:
 	poetry install
 	poetry build
 	poetry run task doc
+
+test-packagex:
+	$(eval WDIR=/tmp/test-pypi)
+	mkdir -p $(WDIR)
+	rm -rf $(WDIR)/*
+	cd $(WDIR)
+	$(eval VENV=.venv)
+	python3 -m venv $(VENV)
+	source $(VENV)/bin/activate
+	python -m pip install --upgrade pip
+
+	pip install -i https://test.pypi.org/simple/ sphinx_mindmap
+
+test-package-show:
+	$(eval WDIR=/tmp/test)
+	cd $(WDIR)/sphinx_mindmap
+	$(MAKE) webserver show

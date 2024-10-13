@@ -24,14 +24,10 @@ Alternatively (Linux)
     git clone https://github.com/mi-parkes/sphinx_mindmap.git
     cd sphinx_mindmap
     
-	python3 -m venv .venv
-	source .venv/bin/activate
-	python -m pip install --upgrade pip
-	pip install poetry
 	poetry install
 	poetry build
     
-    python3 -m build --wheel
+    # you can then install the package in your virtual environment
     pip install dist/sphinx_mindmap*.whl
 
 ## Activation
