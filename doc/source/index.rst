@@ -8,3 +8,4 @@
    test1/index.rst
 
 .. mindmap:: _static/puml/sphinx_needs_data_explorer.puml
+

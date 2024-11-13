@@ -4,7 +4,7 @@ project = "sphinx_mindmap"
 copyright = "2024, MP"
 author = "MP"
 version = "0.5"
-release = "0.5.0"
+release = "0.5.2"
 
 extensions = ["sphinx_mindmap", "sphinx.ext.githubpages", "myst_parser"]
 
