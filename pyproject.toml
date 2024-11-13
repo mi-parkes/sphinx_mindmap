@@ -3,7 +3,7 @@ license = {file = "LICENSE"}
 
 [tool.poetry]
 name = "sphinx_mindmap"
-version = "0.5.1"
+version = "0.5.2"
 description = "Visualization of Mindmap represented in plantuml format using visjs network"
 authors = ["Michael Parkes <mparkes@post.cz>"]
 readme = "README.md"
