@@ -30,11 +30,11 @@
         var interfactionMode=false;
         var lastPosition = null;
         const max_zoom = 4;
-        const min_zoom = 0.2;
+        const min_zoom = 0.05;
         var inode = undefined;
         var selectedNode = undefined;
         var layoutDirection = 'LR';
-        let MIN_ZOOM = 0.1;
+        let MIN_ZOOM = 0.05;
         let MAX_ZOOM = 4.0;
         var networkData;
         let lastZoomPosition = { x: 0, y: 0 }
@@ -424,7 +424,7 @@
             };
             nodes = new vis.DataSet(tmp_nodes);
             edges = new vis.DataSet(tmp_edges);
-            network = new vis.Network(container, { nodes: nodes, edges: edges }, getDefaultNetworkLayout());
+            network = new vis.Network(container, { nodes: nodes, edges: edges }, getDefaultNetworkLayout(layoutDirection));
             network.on('hoverNode', handleHoverNode);
             network.on('blurNode', handleBlurNode);
 

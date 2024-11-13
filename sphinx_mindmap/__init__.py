@@ -10,7 +10,7 @@ from docutils.parsers.rst import directives
 from typing import Any
 from sphinx.util.docutils import SphinxDirective
 
-__version__ = "0.5.0"
+__version__ = "0.5.1"
 __display_version__ = __version__
 
 logger = logging.getLogger(__name__)
